@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %} Showtimes {% endblock %}
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <p></p>
+    <h1 class="text-center fontmain">Showtimes</h1>
+    <p></p>
+    {% for movie in movies %}
+        <div class="card bg-transparent border-0 text-white mb-3" style="max-width: 950px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="{% static movie.image %}" class="img-fluid rounded-start" alt="{{ movie.title }}">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h3 class="card-title fontbody">{{ movie.title }}</h3>
+                        <p class="card-text fontbody"><small class="text-body-secondary">Directed
+                            by {{ movie.director }}</small></p>
+                        <p class="card-text fontbody"><small class="text-body-secondary">Runtime: {{ movie.runtime }} |
+                            Rating: {{ movie.rating }}</small></p>
+                        <p class="card-text fontbody">{{ movie.description }}</p>
+                        <div class="card-header fontbody text-center text-bg-danger">
+                            Showtimes For {% now "F dS, Y" %}
+                        </div>
+                        <p></p>
+                        {% for showtime in movie.showtimes.all %}
+                            <a href="{% url 'ticket_purchase' showtime.id %}" type="button"
+                               class="btn btn-danger fontbody btn-lg">
+                                {{ showtime.time }}
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
+

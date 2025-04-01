@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bowlby+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@401&display=swap');
+
+.fontmain {
+  font-family: "Bowlby One", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.card_littlevamp {
+    position: absolute;
+    bottom: 300px;
+    left: 500px;
+}
+
+
+.fontbody {
+  font-family: "Source Code Pro", serif;
+  font-weight: 400;
+  font-style: normal;
+}

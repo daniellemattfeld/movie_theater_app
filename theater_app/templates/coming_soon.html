@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %} Coming Soon {% endblock %}
+{% block content %}
+    <p></p>
+    <figure class="text-center">
+        <p class="h1 fontmain">Coming Soon</p>
+    </figure>
+    {% load static %}
+    {% for upcoming in upcoming_movies %}
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        <div class="card bg-transparent border-0 text-white mb-3" style="max-width: 950px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="{% static upcoming.image %}" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h4 class="card-title fontbody">{{ upcoming.upcoming_movie }}</h4>
+                        <p class="card-text fontbody"><small class="text-body-secondary">Directed
+                            by {{ upcoming.director }}</small></p>
+                        <p class="card-text fontbody">{{ upcoming.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% endfor %}
+
+
+{% endblock %}

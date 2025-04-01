@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %} login and register {% endblock %}
+{% block content %}
+{% load static %}
+    <div class="d-flex flex-column flex-md-row gap-3">
+
+        <form method="POST">
+            <div class="container p-5 my-5 border fontbody">
+                <h1 class="text-center fontmain">Sign Up</h1>
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ next_url }}">
+                {{ register_form.as_p }}
+                <button type="submit" name="register" class="btn btn-danger">Register</button>
+            </div>
+        </form>
+
+        <form method="POST">
+            <div class="container p-5 my-5 border fontmain">
+                <h1>Log in</h1>
+                {% csrf_token %}
+
+                <input type="hidden" name="next" value="{{ next_url }}"/>
+                <div class="mb-3">
+                    <label for="username" class="form-label flex-fill fontbody">Email:</label>
+                    <input type="email" name="username" class="form-control" id="username"
+                           placeholder="Enter your email"
+                           required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label fontbody">Password:</label>
+                    <input type="password" name="password" class="form-control" id="password"
+                           placeholder="Enter your password" required>
+                </div>
+
+                <div class="col-auto fontbody">
+                    <button type="submit" name="login" class="btn btn-danger">Log in</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

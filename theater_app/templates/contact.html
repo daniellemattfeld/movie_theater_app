@@ -1,0 +1,32 @@
+{% extends "base.html" %} {% block title %} Contact {% endblock %}
+{% block content %}
+{% load static %}
+
+<div class="container mt-5">
+    <h1 class="text-center fontmain">Contact Us</h1>
+    <h4 class="text-center fontbody">Have a question? Movie Suggestion? Let us know!</h4>
+    <form method="post" class="mt-4">
+        {% csrf_token %}
+        <div class="mb-3 fontbody">
+            {{ form.name.label_tag }}
+            {{ form.name }}
+        </div>
+        <div class="mb-3 fontbody">
+            {{ form.email.label_tag }}
+            {{ form.email }}
+        </div>
+        <div class="mb-3 fontbody">
+            {{ form.subject.label_tag }}
+            {{ form.subject }}
+        </div>
+        <div class="mb-3 fontbody">
+            {{ form.message.label_tag }}
+            {{ form.message }}
+        </div>
+        <div class="mb-3 fontbody">
+        <button type="submit" class="btn btn-danger">Send Message</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

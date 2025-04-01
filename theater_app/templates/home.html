@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %} Home Page {% endblock %}
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    {% for movie in movies %}
+        <p></p>
+        <div class="card border-0 bg-transparent">
+            <img src="{% static movie.homepage_image %}" class="card-img img-fluid"
+                 style="max-width: 950px" alt="{{ movie.title }}">
+            <div class="card-img-overlay">
+                <h2 class="card-title fontmain">{{ movie.title }}</h2>
+                <a href="{% url 'movie_details' movie.id %}" class="btn fontmain btn-dark btn-lg position-absolute"
+                   style="bottom: 70px; left: 770px;">Details and Tickets</a>
+            </div>
+        </div>
+        <p></p>
+    {% endfor %}
+{% endblock %}
+
